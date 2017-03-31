@@ -4,6 +4,6 @@ from pymongo import MongoClient
 class LoupeQuery(Resource):
     def __init__(self):
         self.client = MongoClient()
-        self.collection = client.test.outputs
+        self.collection = self.client.test.outputs
     def get(self, hash_code):
-        return self.collection.find_one({'hash': hash_code})
+        return str(self.collection.find_one({'hash': hash_code}))
