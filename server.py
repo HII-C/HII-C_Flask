@@ -12,8 +12,8 @@ client = None
 def main():
     return "HII-C MongoDB Interface"
 
-api.add_resource(LoupeQuery, '/loupe_query')
+api.add_resource(LoupeQuery, '/loupe_query/<string:hash_code>')
 
 if __name__ == "__main__":
-    #client = MongoDB('mongodb://localhost:27017/')
+    app.debug = True
     app.run()

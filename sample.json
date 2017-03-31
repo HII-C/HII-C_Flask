@@ -1,0 +1,110 @@
+{
+  "associations":
+   [
+      {
+        "input":
+          [
+            {
+              "filterByCategory": "Diagnosis",
+              "filterByCode":
+              {
+               "code": "73211009",
+               "codeSystem": "SNOMEDCT_US"
+              },
+             "codesToFilterCategory": "Diagnosis",
+             "codesToFilter":
+              [
+               {
+                 "codeSystem": "SNOMEDCT_US",
+                 "code": "280136002"
+               },
+               {
+                 "codeSystem": "SNOMEDCT_US",
+                 "code": "13644009"
+
+               },
+               {
+                 "codeSystem": "SNOMEDCT_US",
+                 "code": "118932009"
+               }
+             ]
+            }
+          ],
+        "output":
+          [
+            {
+            "hash": "XYZ",
+            "filteredCodes":
+              [
+                {
+                  "code": "118932009",
+                  "codeSystem": "SNOMEDCT_US"
+                },
+                {
+                  "code": "13644009",
+                  "codeSystem": "SNOMEDCT_US"
+                },
+                {
+                  "code": "280136002",
+                  "codeSystem": "SNOMEDCT_US"
+                }
+              ]
+            }
+          ]
+      },
+
+      {
+        "input":
+          [
+            {
+              "filterByCategory": "Diagnosis",
+              "codesToFilter":
+              [
+               {
+                 "codeSystem": "SNOMEDCT_US",
+                 "code": "280136002"
+               },
+               {
+                 "codeSystem": "SNOMEDCT_US",
+                 "code": "13644009"
+
+               },
+               {
+                 "codeSystem": "SNOMEDCT_US",
+                 "code": "118932009"
+               }
+             ],
+              "filterByCode":
+              {
+               "code": "73211009",
+               "codeSystem": "SNOMEDCT_US"
+              },
+             "codesToFilterCategory": "Diagnosis"
+
+            }
+          ],
+        "output":
+          [
+            {
+            "hash": "XYZ",
+            "filteredCodes":
+              [
+                {
+                  "code": "118932009",
+                  "codeSystem": "SNOMEDCT_US"
+                },
+                {
+                  "code": "13644009",
+                  "codeSystem": "SNOMEDCT_US"
+                },
+                {
+                  "code": "280136002",
+                  "codeSystem": "SNOMEDCT_US"
+                }
+              ]
+            }
+          ]
+      }
+
+    ]
+}
