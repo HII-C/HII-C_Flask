@@ -8,10 +8,6 @@ api = Api(app)
 
 client = None
 
-f = open('mongo.txt')
-MONGO_URL = f.readline().strip('\n')
-f.close()
-
 @app.route("/")
 def main():
     return "HII-C MongoDB Interface"
