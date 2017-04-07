@@ -2,6 +2,8 @@ from flask_restful import Resource
 from pymongo import MongoClient
 from helpers import loadMongoURL
 
+import json
+
 class LoupeQuery(Resource):
     def __init__(self):
         self.client = MongoClient(loadMongoURL())

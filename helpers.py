@@ -1,5 +1,5 @@
 def loadMongoURL():
-    f = open('mongo.txt')
+    f = open('../mongo.txt')
     res = f.readline().strip('\n')
     f.close()
 
