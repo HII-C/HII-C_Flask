@@ -7,4 +7,11 @@ class LoupeQuery(Resource):
         self.client = MongoClient(loadMongoURL())
         self.collection = self.client.test.outputs
     def get(self, hash_code):
-        return str(self.collection.find_one({'hash': hash_code}))
+        res = self.collection.find_one({'hash': hash_code})
+
+        if res == None:
+            return json.dumps({})
+
+        res.pop('_id', None)
+
+        return json.dumps(res)
