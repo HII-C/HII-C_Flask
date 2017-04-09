@@ -19,4 +19,7 @@ class LoupeQuery(Resource):
         return json.dumps(res)
 
     def post(self):
-        pass
+        body = request.form['body']
+        self.collection.insert_one(body)
+
+        return body
