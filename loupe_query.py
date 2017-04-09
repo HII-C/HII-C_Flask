@@ -17,3 +17,6 @@ class LoupeQuery(Resource):
         res.pop('_id', None)
 
         return json.dumps(res)
+
+    def post(self):
+        pass
