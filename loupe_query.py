@@ -23,4 +23,6 @@ class LoupeQuery(Resource):
         body = request.get_json(force=True)
         self.collection.insert_one(body)
 
-        return body
+        res = {'success': True, 'message': 'The loupe query was successfully inserted.'}
+
+        return json.dumps(res)
