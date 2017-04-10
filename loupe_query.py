@@ -1,4 +1,5 @@
 from flask_restful import Resource
+from flask import request
 from pymongo import MongoClient
 from helpers import loadMongoURL
 
@@ -19,7 +20,7 @@ class LoupeQuery(Resource):
         return json.dumps(res)
 
     def post(self):
-        body = request.form['body']
+        body = request.get_json(force=True)
         self.collection.insert_one(body)
 
         return body
