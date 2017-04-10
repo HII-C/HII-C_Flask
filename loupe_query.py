@@ -5,8 +5,8 @@ from helpers import loadMongoURL
 
 import json
 
-def validate_post(json):
-    return (json != None) and ('hash' in json) and ('output' in json)
+def validate_post(body):
+    return (body != None) and ('hash' in body) and ('output' in body)
 
 class LoupeQuery(Resource):
     def __init__(self):
@@ -23,15 +23,15 @@ class LoupeQuery(Resource):
         return json.dumps(res)
 
     def post(self):
-        json = request.get_json(force=True)
+        body = request.get_json(force=True)
 
         message = ''
 
-        if validate_post(json):
-            if self.collection.find_one({'hash': json['hash']}) != None:
+        if validate_post(body):
+            if self.collection.find_one({'hash': body['hash']}) != None:
                 message = 'A loupe query with the provided hash already exists.'
             else:
-                self.collection.insert_one(json)
+                self.collection.insert_one(body)
                 message = 'The loupe query was successfully inserted.'
         else:
             message = 'The POST request is malformed.'
