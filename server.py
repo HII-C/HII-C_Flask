@@ -16,4 +16,4 @@ api.add_resource(LoupeQuery, '/loupe_query', '/loupe_query/<string:hash_code>')
 
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
