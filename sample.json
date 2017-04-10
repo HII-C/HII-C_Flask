@@ -108,3 +108,7 @@
 
     ]
 }
+
+Sample curl request:
+
+curl -H "Content-Type: application/json" -X POST -d '{"hash_code": "ABC", "output": [ { "filteredCodes": [ { "code": "118932009", "codeSystem": "SNOMEDCT_US" }, { "code": "13644009", "codeSystem": "SNOMEDCT_US" }, { "code": "280136002", "codeSystem": "SNOMEDCT_US" } ] } ] }' http://localhost:5000/loupe_query
