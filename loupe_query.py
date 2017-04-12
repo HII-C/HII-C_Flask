@@ -12,6 +12,7 @@ class LoupeQuery(Resource):
     def __init__(self):
         self.client = MongoClient(loadMongoURL())
         self.collection = self.client.test.outputs
+
     def get(self, hash_code):
         res = self.collection.find_one({'hash': hash_code})
 
