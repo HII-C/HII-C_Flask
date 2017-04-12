@@ -27,6 +27,7 @@ class LoupeQuery(Resource):
         body = request.get_json(force=True)
 
         message = ''
+        success = False
 
         if validate_post(body):
             if self.collection.find_one({'hash': body['hash']}) != None:
@@ -34,9 +35,10 @@ class LoupeQuery(Resource):
             else:
                 self.collection.insert_one(body)
                 message = 'The loupe query was successfully inserted.'
+                success = True
         else:
             message = 'The POST request is malformed.'
 
-        res = {'success': True, 'message': message}
-
+        res = {'success': success, 'message': message}
+        
         return json.dumps(res)
