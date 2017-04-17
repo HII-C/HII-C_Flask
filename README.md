@@ -14,6 +14,15 @@ curl -H "Content-Type: application/json" -X POST -d '{"hash": "ABC", "output": [
 curl localhost:5000/loupe_query/ABC
 ```
 
+### Retrieving a LOINC code:
+
+```
+curl localhost:5000/loinc_code/9970-5
+```
+
+The JSON response will include the long name for the LOINC term as well as the
+system the term belongs to.
+
 ## Running with Docker
 
 After cloning into the git repository, first run this command:
