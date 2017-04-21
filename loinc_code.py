@@ -14,8 +14,8 @@ class LoincCode(Resource):
         res = self.collection.find_one({'LOINC_NUM': code})
 
         if res == None:
-            return json.dumps({})
+            return {}
 
         res.pop('_id', None)
 
-        return json.dumps(res)
+        return res

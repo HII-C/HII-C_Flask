@@ -21,7 +21,7 @@ class LoupeQuery(Resource):
 
         res.pop('_id', None)
 
-        return json.dumps(res)
+        return res
 
     def post(self):
         body = request.get_json(force=True)
@@ -40,5 +40,5 @@ class LoupeQuery(Resource):
             message = 'The POST request is malformed.'
 
         res = {'success': success, 'message': message}
-        
-        return json.dumps(res)
+
+        return res
