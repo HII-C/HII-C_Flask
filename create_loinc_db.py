@@ -13,7 +13,7 @@ if __name__ == '__main__':
     client = MongoClient(loadMongoURL())
     collection = client.test.loinc
 
-    with open('../loinc.csv') as f:
+    with open('loinc.csv') as f:
         reader = csv.reader(f)
 
         #Skip over the first row, which contains the column names.
