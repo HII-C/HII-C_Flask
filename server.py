@@ -11,7 +11,9 @@ client = None
 
 @app.route("/")
 def main():
-    return "HII-C MongoDB Interface"
+    return """<b>HII-C Mongo Proxy.</b><br><br>
+              You must supply a valid username and password to use this API.
+              """
 
 api.add_resource(LoupeQuery, '/loupe_query', '/loupe_query/<string:hash_code>')
 api.add_resource(LoincCode, '/loinc_code/<string:code>')
