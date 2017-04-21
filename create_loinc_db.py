@@ -13,6 +13,9 @@ if __name__ == '__main__':
     client = MongoClient(loadMongoURL())
     collection = client.test.loinc
 
+    #Delete previous LOINC documents.
+    collection.delete_many({})
+
     with open('loinc.csv') as f:
         reader = csv.reader(f)
 
@@ -30,7 +33,7 @@ if __name__ == '__main__':
 
             collection.insert_one(doc)
 
-            if i % 100 == 0:
-                print "Inserted " + str(i)
+            if i % 1000 == 0:
+                print "Inserted " + str(i) + " documents."
 
     client.close()
