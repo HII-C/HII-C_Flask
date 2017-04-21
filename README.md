@@ -23,22 +23,28 @@ curl localhost:5000/loinc_code/9970-5
 The JSON response will include the long name for the LOINC term as well as the
 system the term belongs to.
 
-## Running with Docker
+## Running with Docker for Development
 
 After cloning into the git repository, first run this command:
 
 ```
-docker build -t hii-c_interface:latest .
+docker build -t p3000/mongo-proxy:latest .
 ```
 
 Then, run the following command to start the container:
 
 ```
-docker run -d -e DB="---" -p 5000:5000 hii-c_interface:latest
+docker run -d -e DB="mongodb://username:password@host.example.com:27017" -p 3060:5000 p3000/mongo-proxy:latest
 ```
 
-**Note:** In the above command, "---" should be replaced with the
-connection string for the Mongo DB.
+## Production Deployment with Docker
+
+A live instance is currently deployed at http://mongo-proxy.healthcreek.org, physically running on docker01.healthcreek.org at ASU BMI. The command string is only slightly different.
+
+```
+docker run -d -p 3060:5000 --name mongo-proxy --restart unless-stopped -e "DB=mongo://admin:the_password@db01.healthcreek.org" p3000/mongo-proxy:latest
+```
+
 
 Now, you should be able to connect to the API through the browser at
-[localhost:5000](localhost:5000).
+[localhost:3060](localhost:3060).
