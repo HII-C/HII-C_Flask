@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from flask_restful import Api
 from loupe_query import LoupeQuery
 from loinc_code import LoincCode
+from patient import Patient
 
 app = Flask(__name__)
 api = Api(app)

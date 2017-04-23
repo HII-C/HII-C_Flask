@@ -25,7 +25,7 @@ class LoupeQuery(Resource):
 
         return res
 
-    @authenticate
+    # @authenticate
     def post(self):
         body = request.get_json(force=True)
 
