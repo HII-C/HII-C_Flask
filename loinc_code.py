@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask import request
 from pymongo import MongoClient
 from helpers import loadMongoURL
-
+from auth import authenticate
 import json
 
 class LoincCode(Resource):
@@ -10,12 +10,13 @@ class LoincCode(Resource):
         self.client = MongoClient(loadMongoURL())
         self.collection = self.client.test.loinc
 
+    @authenticate
     def get(self, code):
         res = self.collection.find_one({'LOINC_NUM': code})
 
         if res == None:
-            return json.dumps({})
+            return {}
 
         res.pop('_id', None)
 
-        return json.dumps(res)
+        return res

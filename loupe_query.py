@@ -2,6 +2,7 @@ from flask_restful import Resource
 from flask import request
 from pymongo import MongoClient
 from helpers import loadMongoURL
+from auth import authenticate
 
 import json
 
@@ -13,6 +14,7 @@ class LoupeQuery(Resource):
         self.client = MongoClient(loadMongoURL())
         self.collection = self.client.test.outputs
 
+    @authenticate
     def get(self, hash_code):
         res = self.collection.find_one({'hash': hash_code})
 
@@ -21,8 +23,9 @@ class LoupeQuery(Resource):
 
         res.pop('_id', None)
 
-        return json.dumps(res)
+        return res
 
+    @authenticate
     def post(self):
         body = request.get_json(force=True)
 
@@ -40,5 +43,5 @@ class LoupeQuery(Resource):
             message = 'The POST request is malformed.'
 
         res = {'success': success, 'message': message}
-        
-        return json.dumps(res)
+
+        return res
