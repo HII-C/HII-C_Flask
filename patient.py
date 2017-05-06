@@ -22,5 +22,3 @@ class Patient(Resource):
 			print("This Patient exists")
 			res.pop('_id', None)
 			return res
-
-	def post(self):

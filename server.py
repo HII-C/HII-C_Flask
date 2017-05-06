@@ -4,6 +4,7 @@ from flask_restful import Api
 from loupe_query import LoupeQuery
 from loinc_code import LoincCode
 from patient import Patient
+from observation import Observation
 
 app = Flask(__name__)
 api = Api(app)
@@ -19,6 +20,7 @@ def main():
 api.add_resource(LoupeQuery, '/loupe_query', '/loupe_query/<string:hash_code>')
 api.add_resource(LoincCode, '/loinc_code/<string:code>')
 api.add_resource(Patient, '/Patient/<string:patient_id>')
+api.add_resource(Observation, '/Observation/<string:patient_id>', '/Observation/<string:patient_id>/')
 
 if __name__ == "__main__":
     app.debug = True
