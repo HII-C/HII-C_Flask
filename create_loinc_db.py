@@ -20,11 +20,10 @@ if __name__ == '__main__':
         reader = csv.reader(f)
 
         #Skip over the first row, which contains the column names.
-        reader.next()
+        reader.__next__()
 
         for i in range(0, ROWS):
-            res = reader.next()
-
+            res = reader.__next__()
             doc = {
                 'LOINC_NUM': res[LOINC_NUM],
                 'COMPONENT': res[COMPONENT],
@@ -34,6 +33,6 @@ if __name__ == '__main__':
             collection.insert_one(doc)
 
             if i % 1000 == 0:
-                print "Inserted " + str(i) + " documents."
+                print("Inserted " + str(i) + " documents.")
 
     client.close()
