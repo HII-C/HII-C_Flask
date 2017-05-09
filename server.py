@@ -21,8 +21,8 @@ def main():
 api.add_resource(LoupeQuery, '/loupe_query', '/loupe_query/<string:hash_code>')
 api.add_resource(LoincCode, '/loinc_code/<string:code>')
 api.add_resource(Patient, '/Patient/<string:patient_id>')
-api.add_resource(Observation, '/Observation/<string:patient_id>', '/Observation/<string:patient_id>/')
-api.add_resource(Condition, '/Condition/<string:patient_id>', '/Condition/<string:patient_id>/')
+api.add_resource(Observation, '/Observation')
+api.add_resource(Condition, '/Condition')
 
 if __name__ == "__main__":
     app.debug = True

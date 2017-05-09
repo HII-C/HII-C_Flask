@@ -10,7 +10,7 @@ class LoincCode(Resource):
         self.client = MongoClient(loadMongoURL())
         self.collection = self.client.test.loinc
 
-    # @authenticate
+    @authenticate
     def get(self, code):
         res = self.collection.find_one({'LOINC_NUM': code})
 

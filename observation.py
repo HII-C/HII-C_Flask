@@ -1,4 +1,5 @@
 from flask_restful import Resource
+from flask import request
 import os
 import pprint
 from pymongo import MongoClient
@@ -10,8 +11,10 @@ class Observation(Resource):
 		self.client = MongoClient(loadMongoURL())
 		self.collection = self.client.test.Patient
 
-	def get(self, patient_id):
+	def get(self):
+		patient_id = request.args.get('Patient')
 		res = self.collection.find_one({'Patient.id': patient_id})
+
 		print(patient_id)
 
 		if res == None:

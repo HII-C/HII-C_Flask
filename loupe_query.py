@@ -14,7 +14,7 @@ class LoupeQuery(Resource):
         self.client = MongoClient(loadMongoURL())
         self.collection = self.client.test.outputs
 
-    # @authenticate
+    @authenticate
     def get(self, hash_code):
         res = self.collection.find_one({'hash': hash_code})
 
@@ -25,7 +25,7 @@ class LoupeQuery(Resource):
 
         return res
 
-    # @authenticate
+    @authenticate
     def post(self):
         body = request.get_json(force=True)
 
