@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from flask import jsonify, request
+from flask import request
 from pymongo import MongoClient
 from helpers import loadMongoURL
 from auth import requires_auth
@@ -22,10 +22,14 @@ class Condition(Resource):
             res.pop('_id', None)
             return json.dumps(res['Patient'][0]['resource']['Conditions'])
 
+    @requires_auth
     def post(self):
+        patient_id = request.args.get('Patient')
         patient_data = request.get_json(force=True)
-        if (request.args.get('Condition') not in patient_data['Patient'][0]['Conditions']):
-            self.collection.insert_one(patient_data)
-            return "Patient Successfully inserted"
+        res = self.collection.find_one({'Patient.id': patient_id})
+        patientIndex = self.collection.find({'id': {'$lt': patient_id}}).count()
+        if (patient_data not in res['Patient'][0]['resource']['Conditions']):
+            self.collection.update_one({'Patient.id': patient_id}, {'$addToSet': {('Patient.{}.resource.Conditions').format(patientIndex): patient_data}})
+            return "Condition Added"
         else:
-            return "That condition is already been added"
+            return "This already exists in the Conditions list"

@@ -22,3 +22,15 @@ class Observation(Resource):
         else:
             res.pop('_id', None)
             return jsonify(res['Patient'][0]['resource']['Observations'])
+
+    @requires_auth
+    def post(self):
+        patient_id = request.args.get('Patient')
+        patient_data = request.get_json(force=True)
+        res = self.collection.find_one({'Patient.id': patient_id})
+        patientIndex = self.collection.find({'id': {'$lt': patient_id}}).count()
+        if (patient_data not in res['Patient'][0]['resource']['Observations']):
+            self.collection.update_one({'Patient.id': patient_id}, {'$addToSet': {('Patient.{}.resource.Observations').format(patientIndex): patient_data}})
+            return "Observation Added"
+        else:
+            return "This already exists in the observations list"

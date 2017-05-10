@@ -2,7 +2,8 @@ from flask import Flask
 from flask_restful import Api
 from loupe_query import LoupeQuery
 from loinc_code import LoincCode
-from patient import Patient
+from patient import PatientAll
+from one_patient import OnePatient
 from observation import Observation
 from condition import Condition
 
@@ -21,7 +22,8 @@ def main():
 
 api.add_resource(LoupeQuery, '/loupe_query', '/loupe_query/<string:hash_code>', '/loupe_query/<string:hash_code>/')
 api.add_resource(LoincCode, '/loinc_code/<string:code>', '/loinc_code/<string:code>/')
-api.add_resource(Patient, '/Patient')
+api.add_resource(PatientAll, '/Patient', '/Patient/')
+api.add_resource(OnePatient, '/Patient/<string:patient_id>', '/Patient/<string:patient_id>/')
 api.add_resource(Observation, '/Observation')
 api.add_resource(Condition, '/Condition', '/Condition/')
 
