@@ -29,7 +29,7 @@ api.add_resource(PatientAll, '/Patient', '/Patient/')
 api.add_resource(OnePatient, '/Patient/<string:patient_id>', '/Patient/<string:patient_id>/')
 api.add_resource(Observation, '/Observation')
 api.add_resource(Condition, '/Condition', '/Condition/')
-api.add_resource(TokenCheck, '/token')
+api.add_resource(TokenCheck, '/token', '/token/')
 
 if __name__ == "__main__":
     app.debug = True
