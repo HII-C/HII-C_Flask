@@ -1,9 +1,9 @@
 from flask_restful import Resource
-from flask import request
+from flask import request, jsonify
 from pymongo import MongoClient
 from helpers import loadMongoURL
 from auth import requires_auth
-import json
+# import json
 
 
 class Condition(Resource):
@@ -20,7 +20,7 @@ class Condition(Resource):
             return "This patient does not exist"
         else:
             res.pop('_id', None)
-            return json.dumps(res['Patient'][0]['resource']['Conditions'])
+            return jsonify(res['Patient'][0]['resource']['Conditions'])
 
     @requires_auth
     def post(self):
