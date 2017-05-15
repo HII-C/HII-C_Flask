@@ -20,7 +20,7 @@ class Condition(Resource):
             return "This patient does not exist"
         else:
             res.pop('_id', None)
-            return jsonify(res['Patient'][0]['resource']['Conditions'])
+            return res['Patient'][0]['resource']['Conditions']
 
     @requires_auth
     def post(self):

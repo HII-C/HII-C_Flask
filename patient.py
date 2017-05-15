@@ -16,8 +16,8 @@ class PatientAll(Resource):
         if res is None:
             return "There are no patients in the database"
         else:
-            returnDict = list()
+            returnDict = {}
             for item in res:
                 item.pop('_id', None)
-                returnDict.append(item)
+                returnDict.update(item)
             return returnDict

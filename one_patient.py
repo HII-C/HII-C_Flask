@@ -19,13 +19,9 @@ class OnePatient(Resource):
                 return "This patient does not exist"
             else:
                 res.pop('_id', None)
-                return jsonify(dumps(res))
+                return res
         else:
-            res = self.collection.find({})
-            if res is None:
-                return "There are no patients in the database"
-            else:
-                return jsonify(dumps(res))
+            return "Invalid query"
 
     @requires_auth
     def post(self):
