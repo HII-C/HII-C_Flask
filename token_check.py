@@ -17,7 +17,7 @@ class TokenCheck(Resource):
         token_url = request.form['token_url']
         data = 'grant_type=authorization_code&code=' + code + '&redirect_uri=' + redirect_uri
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        client = '160324a1-e8fa-440c-8068-0f482701f1e8'
-        client_secret = 'HNjyMOK6SkdVFuilQSuORvQ8duqg4DD7yJ0weZE3Vfffsfl3nY9JLOQewg-arYxSlnLkDh9c3Ldj5hfUQ2zUoA'
+        client = '82b330f7-1186-4059-8c31-62dce4b18d77'
+        client_secret = 'AKgTeRtUGHrr3Eu7HF0fJf6DfbrLTk2ieyeSpR0KUweizQWfqZICOYjHjUbXegMajNhTgQEKt5AZryb_5KAZTIs'
         res = requests.post(token_url, headers=headers, auth=(client, client_secret), data=data)
         return res.json()
