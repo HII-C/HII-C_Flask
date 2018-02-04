@@ -8,8 +8,9 @@ import requests
 
 class TokenCheck(Resource):
     def __init__(self):
-        self.client = MongoClient(loadMongoURL())
-        self.collection = self.client.test.Patient
+        pass
+        # self.client = MongoClient(loadMongoURL())
+        # self.collection = self.client.test.Patient
 
     def post(self):
         code = request.form['code']
@@ -17,8 +18,8 @@ class TokenCheck(Resource):
         token_url = request.form['token_url']
         data = 'grant_type=authorization_code&code=' + code + '&redirect_uri=' + redirect_uri
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        client = '82b330f7-1186-4059-8c31-62dce4b18d77'
-        client_secret = 'AKgTeRtUGHrr3Eu7HF0fJf6DfbrLTk2ieyeSpR0KUweizQWfqZICOYjHjUbXegMajNhTgQEKt5AZryb_5KAZTIs'
+        client = '2c304df8-711d-4de9-afbe-330c01a5ca8e'
+        client_secret = 'O7mfO8pNJMLC6Sm34OYIjgFYiips-1H2uKHuGqC0nVDIOA_N3Ec-bm4y6-nIyGVLZuL1b5UawPBgrXn-njUw_w'#'AKgTeRtUGHrr3Eu7HF0fJf6DfbrLTk2ieyeSpR0KUweizQWfqZICOYjHjUbXegMajNhTgQEKt5AZryb_5KAZTIs'
 
         res = requests.post(token_url, headers=headers, auth=(client, client_secret), data=data)
         return res.json()
