@@ -7,6 +7,7 @@ from one_patient import OnePatient
 from observation import Observation
 from condition import Condition
 from token_check import TokenCheck
+from prod_token_check import ProdTokenCheck
 from flask_cors import CORS, cross_origin
 import os
 
@@ -31,6 +32,7 @@ api.add_resource(OnePatient, '/Patient/<string:patient_id>', '/Patient/<string:p
 api.add_resource(Observation, '/Observation')
 api.add_resource(Condition, '/Condition', '/Condition/')
 api.add_resource(TokenCheck, '/token', '/token/')
+api.add_resource(ProdTokenCheck, '/prod_token', '/prod_token/')
 
 if __name__ == "__main__":
     app.debug = True
